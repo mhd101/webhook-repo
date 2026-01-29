@@ -54,11 +54,10 @@ def handle_pull_request(payload):
             "timestamp": utc_now()
         })
 
-# endpoint to fetch latest events
-@app.route("/events")
+# endpoint to get latest events
+@app.route("/events", methods=["GET"])
 def events():
-    return jsonify(get_latest_events())
-
+    return jsonify(get_latest_events()), 200
 
 # utility function to get current UTC time formatted
 def utc_now():
