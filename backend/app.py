@@ -10,7 +10,7 @@ CORS(app)
 @app.route("/webhook", methods=["POST"])
 def webhook():
     event = request.headers.get("X-GitHub-Event")
-    payload = request.json
+    payload = request.get_json()
 
     if event == "push":
         handle_push(payload)
